@@ -1,0 +1,336 @@
+/* =========================================
+   PHẦN 1: TÙY CHỈNH ẨN/HIỆN (Giữ nguyên)
+   ========================================= */
+button[value="lightTabPage-1"],
+button[value="lightTabPage-3"] {
+  display: none !important;
+}
+
+.connectStatus {
+  font-size: 0 !important;
+}
+.connectStatus i {
+  font-size: 16px !important;
+  margin-right: 0 !important;
+}
+
+/* =========================================
+   FIX CỨNG CHIỀU RỘNG MENU TRÁI (NAV)
+   ========================================= */
+
+/* 1. Khóa cứng chiều rộng cho cả Menu và Footer */
+.navigation,
+.foot {
+  /* Ba dòng lệnh "Thần thánh" để khóa size: */
+  width: 260px !important; /* Chiều rộng mong muốn */
+  min-width: 260px !important; /* Cấm không cho co lại bé hơn */
+  max-width: 260px !important; /* Cấm không cho giãn ra to hơn */
+
+  /* Quan trọng: Cấm bị ép nhỏ lại khi cửa sổ chật chội */
+  flex-shrink: 0 !important;
+
+  box-sizing: border-box;
+  margin: 0 !important; /* Xóa căn lề thừa */
+}
+
+/* 2. Nội dung bên trong (Card) tự động theo kích thước cứng trên */
+.navigation .v-card {
+  width: 100% !important;
+  padding: 15px !important;
+}
+
+/* 3. Chỉnh nút Profile (Vẫn giữ chia đôi cho đẹp) */
+.navigation .configBox {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important; /* Khoảng cách giữa các nút */
+}
+
+.navigation .configBtn,
+.navigation .configBtn_checked {
+  /* Công thức chia đôi chính xác dựa trên size 260px */
+  width: calc(50% - 4px) !important;
+
+  font-size: 13px !important;
+  text-align: center !important;
+  padding: 0 5px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 4. Footer căn chỉnh lại chút cho thẳng hàng */
+.foot {
+  padding-left: 10px !important;
+  margin-top: 10px !important;
+}
+
+.v-list-item-title {
+  font-size: 14px !important;
+}
+.v-card-title {
+  font-size: 18px !important;
+  font-weight: 800;
+}
+
+.v-card,
+.v-list,
+.n-tabs-rail,
+.n-tabs-tab--active,
+.v-list--nav,
+.v-list--density-compact,
+.el-dialog,
+.is-align-center {
+  background-color: rgba(0, 0, 0, 0) !important;
+  backdrop-filter: blur(40px) !important;
+}
+
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 1;
+  pointer-events: none;
+}
+.n-tabs-tab__label {
+  transform: scale(0.9);
+}
+
+/* --- ÉP MÀU CHỮ TRẮNG TINH (WHITE TEXT) --- */
+
+/* 2. Tất cả các loại chữ, tiêu đề, đoạn văn */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+span,
+label,
+.v-card-title,
+.v-card-subtitle,
+.v-list-item-title,
+.v-list-item-subtitle,
+.pt-4 {
+  color: #ffffff !important;
+}
+
+/* 3. Các nút bấm (Button) và Tab chuyển đổi */
+button,
+.v-tab,
+.configBtn,
+.configBtn_checked {
+  color: #edebeb !important;
+}
+
+/* 4. Ô nhập liệu (Input) - Rất quan trọng */
+input,
+textarea,
+.v-field__input,
+.el-input__inner {
+  color: #f7f7f7 !important;
+  /* Nếu nhập liệu bị nền trắng chữ trắng thì mở dòng dưới ra: */
+  background-color: rgba(0, 0, 0, 0.432) !important;
+}
+/* 5. Icon (Mặc định cho sang trắng hết) */
+.mdi,
+.v-icon {
+  color: #fcfcfc !important;
+}
+
+/* (Ngoại lệ) Giữ màu xanh cho icon "Đã kết nối" để dễ nhìn */
+.mdi-check-circle,
+.touchtTrave {
+  color: #04b23b !important;
+  margin-left: 1px;
+  margin-top: 7px;
+}
+
+.font,
+.p,
+.draggable,
+.draggable_hold,
+.btn,
+.btn_bind,
+.MPTBtn,
+.MTBtn,
+.TGLBtn,
+.ENDBtn,
+.SOCDRedBtn,
+.MacroBtn,
+.RSBtn,
+.DKSBtn {
+  color: #000000 !important;
+}
+/* =========================================
+   PHẦN 3: TÙY CHỈNH GIAO DIỆN (UI) KHÁC
+   ========================================= */
+.is-always-shadow,
+.el-input-number span,
+.bg-surface-light,
+.chart-container,
+.el-button,
+.v-data-table__td,
+.v-data-table-column--align-start,
+.pressKeyTestBox,
+.v-field,
+.el-input__wrapper,
+.el-alert,
+.v-color-picker__controls,
+.keyboard61,
+.v-table,
+.v-sheet,
+.el-popper,
+.FnBtnBox .v-btn__underlay,
+.v-btn,
+.trHightLight {
+  background-color: rgba(0, 0, 0, 0.021) !important;
+  border-radius: 16px !important;
+}
+
+.deadSpaceSettingPage,
+.singleKeyTravelTip,
+.el-input-number,
+.quickTouchTravelSettingPage h3,
+.v-btn__content {
+  transform: scale(0.95);
+}
+
+.n-tabs-capsule {
+  background-color: #00000030 !important;
+}
+.quickTouchPress {
+  color: rgb(3, 3, 169) !important;
+}
+.quickTouchRelease {
+  color: rgb(255, 149, 0) !important;
+}
+/* .quickTouchTravelSettingPage {
+  height: 110% !important;
+} */
+.configBtn:hover,
+.staticColorBtn:hover {
+  background-color: #f6f6f64a !important;
+}
+
+/* --- SỬA LỖI CHÈN NHAU (FIX OVERLAP) --- */
+
+/* 1. Đẩy bảng Travel Test lên cao hơn (Tăng số bottom lên) */
+.travelTestCard {
+  position: absolute !important;
+  right: 30px !important;
+  /* SỬA DÒNG NÀY: Tăng từ 120px lên 250px (hoặc cao hơn nếu vẫn dính) */
+  bottom: 156px !important;
+  zoom: 1.05;
+  z-index: 100 !important;
+  margin: 0 !important;
+}
+
+/* --- CHỈNH BTN LIST NẰM NGANG Ở DƯỚI --- */
+
+.BtnList {
+  /* Định vị nằm ngay dưới bảng Test */
+  position: absolute !important;
+  right: 30% !important;
+  bottom: 30px !important; /* Nằm sát đáy */
+  z-index: 100 !important;
+  margin: 0 !important;
+  width: fit-content !important;
+
+  /* Kích hoạt chế độ Lưới (Grid) */
+  display: grid !important;
+
+  /* Chia thành 3 cột đều nhau (3x3) */
+  grid-template-columns: repeat(3, 1fr) !important;
+
+  /* Khoảng cách giữa các nút */
+  gap: 10px !important;
+  height: inherit;
+  /* Giao diện khung chứa */
+  width: 400px !important; /* Cần set chiều rộng cố định để lưới đẹp */
+  background-color: #1e1e1e77 !important;
+  padding: 15px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Tùy chỉnh nút bấm cho vừa vặn lưới */
+.BtnList .v-btn {
+  width: 100% !important; /* Nút giãn hết ô */
+  height: 40px !important;
+  font-size: 11px !important; /* Giảm cỡ chữ chút cho đỡ tràn */
+  white-space: normal !important; /* Cho phép xuống dòng nếu chữ dài */
+  line-height: 1.2 !important;
+  padding: 0 5px !important;
+}
+
+.dynamicLightBtn,
+.dynamicLightBtn_checked,
+.staticColorBtn,
+.staticColorBtn_checked {
+  font-size: smaller;
+}
+.deadSpaceSettingPage > div:nth-of-type(1) > span {
+  color: #04b23b !important; /* Màu Đỏ (Ví dụ) */
+  font-weight: bold !important;
+}
+
+/* 2. Dòng "thang máy (cài lại)" - Nó nằm trong thẻ DIV thứ hai */
+.deadSpaceSettingPage > div:nth-of-type(2) > span {
+  color: #40a9ff !important; /* Màu Xanh (Ví dụ) */
+  font-weight: bold !important;
+}
+.el-notification {
+  background-color: rgba(0, 0, 0, 0.021) !important;
+  backdrop-filter: blur(40px) !important;
+  border-radius: 16px !important;
+}
+
+.mainBox {
+  background-color: #00000000;
+}
+
+.connectBox {
+  background-color: #0000004d;
+}
+
+.touchTravelSettingPage,
+.quickTouchTravelSettingPage,
+.superResponsePage,
+.switch-choose-card {
+  width: 700px;
+  height: 480px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.lang-btn-box {
+  background-color: #00000000;
+}
+
+.lang-btn-box > .active {
+  background-color: #00000085;
+}
+.switch-choose-card[data-v-1ce4f5b0] {
+  background: #00000000;
+}
+.deviceMainBox {
+  position: relative; /* Làm mốc toạ độ cho con */
+}
+
+.BtnList {
+  position: absolute;
+  left: 50%;
+  transform: translateX(
+    -50%
+  ); /* Dịch ngược lại 50% kích thước chính nó để vào giữa chuẩn */
+  /* bottom: 20px; <--- Thêm dòng này nếu muốn ghim nó xuống đáy */
+}
