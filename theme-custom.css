@@ -191,7 +191,9 @@ textarea,
 .el-popper,
 .FnBtnBox .v-btn__underlay,
 .v-btn,
-.trHightLight {
+.trHightLight,
+.el-input-number,
+.el-input__inner {
   background-color: rgba(0, 0, 0, 0.021) !important;
   border-radius: 16px !important;
 }
@@ -299,7 +301,9 @@ textarea,
 }
 
 .connectBox {
-  background-color: #0000004d;
+  display: flex;
+  background-color: #00000094 !important;
+  margin-top: 5%
 }
 
 .touchTravelSettingPage,
@@ -316,8 +320,9 @@ textarea,
   background-color: #00000000;
 }
 
-.lang-btn-box > .active {
-  background-color: #00000085;
+.lang-btn-box > .active,
+.connect-lang > .active {
+  background-color: #00000065;
 }
 .switch-choose-card[data-v-1ce4f5b0] {
   background: #00000000;
@@ -333,4 +338,61 @@ textarea,
     -50%
   ); /* Dịch ngược lại 50% kích thước chính nó để vào giữa chuẩn */
   /* bottom: 20px; <--- Thêm dòng này nếu muốn ghim nó xuống đáy */
+}
+.onlineUpdateTitle {
+  font-size: small;
+}
+.dynamicLightBtn:hover,
+.lang-btn:hover {
+  background-color: #f6f6f64a !important;
+}
+.lang-btn {
+  border-radius: 6px;
+}
+
+.singleKeyTravelTip span {
+  font-size: 15px !important;
+}
+.keysBox {
+  height: auto !important;
+}
+.settingCard {
+  max-height: none !important;
+  height: auto !important;
+  border-radius: 12px !important;
+}
+.settingCard button.v-btn.bg-blue {
+  margin-top: 180px !important;
+}
+
+.lightModeBox span {
+  font-size: small !important;
+}
+/* .bg-blue {
+  background-color: #0011ff91 !important;
+}
+/* .text-blue {
+  color: #640000 !important;
+}
+.staticColorBtn_checked,
+.configBtn_checked,
+.dynamicLightBtn_checked {
+  border: 2px solid #640000 !important;
+} */
+.connectBtnBox {
+  transform: scale(0.8);
+}
+
+/* Định nghĩa kịch bản đổi màu */
+.picBox > a {
+  color: #00e1ff;
+  animation: doi-mau 12s infinite;
+}
+
+.picBox img{
+  transform: scale3d(1.2);
+}
+.connectBox{
+  transform: scale(1.4);
+
 }
