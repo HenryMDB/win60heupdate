@@ -1,3 +1,15 @@
+html {
+  /* Giúp việc chuyển đổi zoom mượt mà hơn */
+  transition: zoom 0.2s ease-in-out;
+  /* Chống răng cưa font chữ khi bị zoom */
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0 auto;
+  overflow-x: hidden; /* Ẩn thanh cuộn ngang nếu bị dư 1-2px do làm tròn số */
+  width: 2560px; /* Cố định chiều rộng chuẩn của bạn */
+}
 /* =========================================
    PHẦN 1: TÙY CHỈNH ẨN/HIỆN (Giữ nguyên)
    ========================================= */
@@ -303,7 +315,7 @@ textarea,
 .connectBox {
   display: flex;
   background-color: #00000094 !important;
-  margin-top: 5%
+  margin-top: 5%;
 }
 
 .touchTravelSettingPage,
@@ -389,10 +401,9 @@ textarea,
   animation: doi-mau 12s infinite;
 }
 
-.picBox img{
+.picBox img {
   transform: scale3d(1.2);
 }
-.connectBox{
+.connectBox {
   transform: scale(1.4);
-
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=2560" />
     <!-- <title>abc</title> -->
     <title>Connecting | Aulastar Online Driver System</title>
     <script type="module" crossorigin src="./assets/index-BsnipD_K.js"></script>
@@ -16,4 +16,58 @@
     </video>
     <div id="app"></div>
   </body>
+  <script>
+  function scalePage() {
+    const designWidth = 2560;
+    const currentWidth = window.innerWidth;
+    const dpr = window.devicePixelRatio;
+    
+    let scale = currentWidth / designWidth;
+
+    // Trường hợp 1: Màn hình High DPI (Surface, MacBook, 4K Monitor scale 200%)
+    if (dpr > 1) {
+      // Ép mức zoom tối thiểu là 0.9 để chữ không bị tí hon
+      // Nhưng vẫn dùng Math.min(..., 1) để không bị to quá đà ở màn 4K
+      scale = Math.max(scale, 0.9);
+    } 
+    // Trường hợp 2: Màn hình Full HD thường (1920x1080, DPR = 1)
+    else {
+      // 1920 / 2560 = 0.75. Đây là mức hiển thị toàn bộ layout 2K trên màn Full HD.
+      // Chúng ta giữ nguyên tỉ lệ này để không bị tràn (scroll ngang).
+      scale = Math.max(scale, 0.75);
+    }
+
+    // Giới hạn không cho phóng to quá 100% (tránh vỡ ảnh/vỡ layout)
+    scale = Math.min(scale, 1);
+
+    document.documentElement.style.zoom = scale;
+  }
+
+  window.addEventListener("resize", scalePage);
+  window.addEventListener("load", scalePage);
+</script>
+  <!-- <script>
+    function scalePage() {
+      const designWidth = 2560;
+      const currentWidth = window.innerWidth;
+      let scale = currentWidth / designWidth;
+
+      // Kiểm tra nếu là màn hình mật độ cao (như Surface, Retina)
+      // VÀ chiều rộng cửa sổ nhỏ (do bị hệ điều hành scale)
+      if (window.devicePixelRatio > 1.25) {
+        // Trên Surface, chúng ta cho phép zoom lớn hơn một chút để dễ đọc
+        // Nhưng vẫn phải đảm bảo không vượt quá tỉ lệ vàng để tránh tràn màn hình
+        scale = scale * 1.2;
+      }
+
+      // Giới hạn tuyệt đối: Không bao giờ zoom nhỏ hơn 0.5 (cho máy quá yếu)
+      // và không zoom lớn hơn 1 nếu bạn không muốn nó bị quá to trên màn 4K
+      scale = Math.min(Math.max(scale, 0.5), 1);
+
+      document.documentElement.style.zoom = scale;
+    }
+
+    window.addEventListener("resize", scalePage);
+    window.addEventListener("load", scalePage);
+  </script> -->
 </html>
