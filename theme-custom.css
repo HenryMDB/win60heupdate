@@ -24,6 +24,7 @@ button[value="lightTabPage-3"] {
 .connectStatus i {
   font-size: 16px !important;
   margin-right: 0 !important;
+  color: #ff0000 !important;
 }
 
 /* =========================================
@@ -406,4 +407,18 @@ textarea,
 }
 .connectBox {
   transform: scale(1.4);
+}
+/* 1. Khai báo font DroidSansChinese */
+@font-face {
+  font-family: "DroidSansChinese";
+  src: url("./assets/DroidSansChinese.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 2. Ép toàn bộ giao diện dùng font này */
+html,
+body,
+* {
+  font-family: "DroidSansChinese", sans-serif !important;
 }
