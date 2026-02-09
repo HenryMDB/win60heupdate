@@ -52476,7 +52476,7 @@ function sxe(e, t, r, n, a, i) {
   );
 }
 const MK = lt(oxe, [["render", sxe]]),
-  uxe = "../assets/kedu-BYKrxX3P.png",
+  uxe = "./assets/kedu-BYKrxX3P.png",
   cxe = z({
     setup() {
       function e(d) {
