@@ -125412,19 +125412,46 @@ const {
           window.open(ie.value);
         },
         toDownloadFw: () => {
-          br.get("https://hea.aulacn.com/api/keyboard/getUpdate.php", {
-            params: { BoardID: a.value, KeyboardName: i.value },
-          })
-            .then((oe) => {
-              if (oe.status == 200 && oe.data.code == 200) {
-                var me = fe.compareVersion(u.value, oe.data.version);
-                me > 0 &&
-                  ((we.value = "App V" + oe.data.version + "✨"),
-                  (he.value = !0),
-                  window.open(oe.data.download));
+          // 1. Tạo link gốc
+          const target = `https://hea.aulacn.com/api/keyboard/getUpdate.php?BoardID=${a.value}&KeyboardName=${i.value}`;
+
+          // 2. Tạo link qua Proxy (AllOrigins)
+          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`;
+
+          // 3. Dùng FETCH (Thay vì br.get) để tránh bị lỗi Header
+          fetch(proxyUrl)
+            .then((response) => {
+              // Kiểm tra nếu mạng lỗi
+              if (!response.ok) throw new Error("Lỗi kết nối đến Proxy");
+              return response.json();
+            })
+            .then((data) => {
+              // AllOrigins trả dữ liệu trong thuộc tính .contents dưới dạng chuỗi
+              if (data && data.contents) {
+                try {
+                  // Parse chuỗi JSON thật của AULA
+                  const realData = JSON.parse(data.contents);
+
+                  // LOGIC CŨ CỦA BẠN (Giữ nguyên)
+                  if (realData.code == 200) {
+                    // So sánh version
+                    var me = fe.compareVersion(u.value, realData.version);
+
+                    // Nếu có bản mới thì hiện thông báo và tải
+                    if (me > 0) {
+                      we.value = "App V" + realData.version + "✨";
+                      he.value = !0;
+                      window.open(realData.download);
+                    }
+                  }
+                } catch (e) {
+                  console.error("Lỗi đọc dữ liệu JSON:", e);
+                }
               }
             })
-            .catch((oe) => {});
+            .catch((err) => {
+              console.error("Lỗi cập nhật:", err);
+            });
         },
       };
     },
