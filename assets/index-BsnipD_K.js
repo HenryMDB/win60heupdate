@@ -125352,7 +125352,7 @@ const {
         const target = `https://hea.aulacn.com/api/keyboard/getUpdate.php?BoardID=${a.value}&KeyboardName=${i.value}`;
 
         // 2. Đi đường vòng qua Cloudflare Worker của bạn
-        const proxyUrl = `https://aula-proxy.ngq-datt.workers.dev/?url=${encodeURIComponent(target)}`;
+        const proxyUrl = `https://aula-proxy.henrymdb.workers.dev/?url=${encodeURIComponent(target)}`;
 
         // 3. Dùng FETCH (thay thế hoàn toàn br.get để tránh lỗi Header và Localhost)
         fetch(proxyUrl)
@@ -125437,7 +125437,7 @@ const {
 
           // 2. Link qua Cloudflare Worker của bạn
           // Lưu ý: Worker trả về JSON xịn luôn, không bị bao bọc
-          const proxyUrl = `https://aula-proxy.ngq-datt.workers.dev/?url=${encodeURIComponent(target)}`;
+          const proxyUrl = `https://aula-proxy.henrymdb.workers.dev/?url=${encodeURIComponent(target)}`;
 
           // 3. Gọi Fetch
           fetch(proxyUrl)
