@@ -121,7 +121,7 @@ button[value="lightTabPage-3"] {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.4;
+  opacity: 0.8;
   pointer-events: none;
 }
 .n-tabs-tab__label {
