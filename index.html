@@ -8,6 +8,10 @@
     <title>Connecting | Aulastar Online Driver System</title>
     <script type="module" crossorigin src="./assets/index-BsnipD_K.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BPnNoBlP.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="./theme-custom.css" />
   </head>
   <body>
@@ -17,35 +21,35 @@
     <div id="app"></div>
   </body>
   <script>
-  function scalePage() {
-    const designWidth = 2560;
-    const currentWidth = window.innerWidth;
-    const dpr = window.devicePixelRatio;
-    
-    let scale = currentWidth / designWidth;
+    function scalePage() {
+      const designWidth = 2560;
+      const currentWidth = window.innerWidth;
+      const dpr = window.devicePixelRatio;
 
-    // Trường hợp 1: Màn hình High DPI (Surface, MacBook, 4K Monitor scale 200%)
-    if (dpr > 1) {
-      // Ép mức zoom tối thiểu là 0.9 để chữ không bị tí hon
-      // Nhưng vẫn dùng Math.min(..., 1) để không bị to quá đà ở màn 4K
-      scale = Math.max(scale, 0.9);
-    } 
-    // Trường hợp 2: Màn hình Full HD thường (1920x1080, DPR = 1)
-    else {
-      // 1920 / 2560 = 0.75. Đây là mức hiển thị toàn bộ layout 2K trên màn Full HD.
-      // Chúng ta giữ nguyên tỉ lệ này để không bị tràn (scroll ngang).
-      scale = Math.max(scale, 0.75);
+      let scale = currentWidth / designWidth;
+
+      // Trường hợp 1: Màn hình High DPI (Surface, MacBook, 4K Monitor scale 200%)
+      if (dpr > 1) {
+        // Ép mức zoom tối thiểu là 0.9 để chữ không bị tí hon
+        // Nhưng vẫn dùng Math.min(..., 1) để không bị to quá đà ở màn 4K
+        scale = Math.max(scale, 0.9);
+      }
+      // Trường hợp 2: Màn hình Full HD thường (1920x1080, DPR = 1)
+      else {
+        // 1920 / 2560 = 0.75. Đây là mức hiển thị toàn bộ layout 2K trên màn Full HD.
+        // Chúng ta giữ nguyên tỉ lệ này để không bị tràn (scroll ngang).
+        scale = Math.max(scale, 0.75);
+      }
+
+      // Giới hạn không cho phóng to quá 100% (tránh vỡ ảnh/vỡ layout)
+      scale = Math.min(scale, 1);
+
+      document.documentElement.style.zoom = scale;
     }
 
-    // Giới hạn không cho phóng to quá 100% (tránh vỡ ảnh/vỡ layout)
-    scale = Math.min(scale, 1);
-
-    document.documentElement.style.zoom = scale;
-  }
-
-  window.addEventListener("resize", scalePage);
-  window.addEventListener("load", scalePage);
-</script>
+    window.addEventListener("resize", scalePage);
+    window.addEventListener("load", scalePage);
+  </script>
   <!-- <script>
     function scalePage() {
       const designWidth = 2560;

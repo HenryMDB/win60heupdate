@@ -1,14 +1,26 @@
-html {
-  /* Giúp việc chuyển đổi zoom mượt mà hơn */
-  transition: zoom 0.2s ease-in-out;
-  /* Chống răng cưa font chữ khi bị zoom */
-  -webkit-font-smoothing: antialiased;
+@font-face {
+  font-family: "DroidSansChinese";
+  src: url("./assets/DroidSansChinese.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
+html {
+  transition: zoom 0.2s ease-in-out; /* Giúp việc chuyển đổi zoom mượt mà hơn */
+
+  -webkit-font-smoothing: antialiased; /* Chống răng cưa font chữ khi bị zoom */
+}
+html,
+body,
+* {
+  font-family: "DroidSansChinese", sans-serif !important;
+}
+/* 1. Khai báo font DroidSansChinese */
 
 body {
+  background-color: #000000 !important; /* Trong suốt hoàn toàn */
   margin: 0 auto;
   overflow-x: hidden; /* Ẩn thanh cuộn ngang nếu bị dư 1-2px do làm tròn số */
-  width: 2560px; /* Cố định chiều rộng chuẩn của bạn */
+  width: 2560px; /* Cố định chiều rộng chuẩn */
 }
 /* =========================================
    PHẦN 1: TÙY CHỈNH ẨN/HIỆN (Giữ nguyên)
@@ -109,7 +121,7 @@ button[value="lightTabPage-3"] {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 1;
+  opacity: 0.4;
   pointer-events: none;
 }
 .n-tabs-tab__label {
@@ -144,13 +156,12 @@ button,
   color: #edebeb !important;
 }
 
-/* 4. Ô nhập liệu (Input) - Rất quan trọng */
+/* 4. Ô nhập liệu (Input) */
 input,
 textarea,
 .v-field__input,
 .el-input__inner {
   color: #f7f7f7 !important;
-  /* Nếu nhập liệu bị nền trắng chữ trắng thì mở dòng dưới ra: */
   background-color: rgba(0, 0, 0, 0.432) !important;
 }
 /* 5. Icon (Mặc định cho sang trắng hết) */
@@ -228,9 +239,7 @@ textarea,
 .quickTouchRelease {
   color: rgb(255, 149, 0) !important;
 }
-/* .quickTouchTravelSettingPage {
-  height: 110% !important;
-} */
+
 .configBtn:hover,
 .staticColorBtn:hover {
   background-color: #f6f6f64a !important;
@@ -242,7 +251,6 @@ textarea,
 .travelTestCard {
   position: absolute !important;
   right: 30px !important;
-  /* SỬA DÒNG NÀY: Tăng từ 120px lên 250px (hoặc cao hơn nếu vẫn dính) */
   bottom: 156px !important;
   zoom: 1.05;
   z-index: 100 !important;
@@ -294,13 +302,13 @@ textarea,
   font-size: smaller;
 }
 .deadSpaceSettingPage > div:nth-of-type(1) > span {
-  color: #04b23b !important; /* Màu Đỏ (Ví dụ) */
+  color: #04b23b !important;
   font-weight: bold !important;
 }
 
 /* 2. Dòng "thang máy (cài lại)" - Nó nằm trong thẻ DIV thứ hai */
 .deadSpaceSettingPage > div:nth-of-type(2) > span {
-  color: #40a9ff !important; /* Màu Xanh (Ví dụ) */
+  color: #40a9ff !important;
   font-weight: bold !important;
 }
 .el-notification {
@@ -314,9 +322,12 @@ textarea,
 }
 
 .connectBox {
+  transform: scale(1.4);
   display: flex;
+  align-items: center;
   background-color: #00000094 !important;
   margin-top: 5%;
+  flex-direction: column !important;
 }
 
 .touchTravelSettingPage,
@@ -350,7 +361,7 @@ textarea,
   transform: translateX(
     -50%
   ); /* Dịch ngược lại 50% kích thước chính nó để vào giữa chuẩn */
-  /* bottom: 20px; <--- Thêm dòng này nếu muốn ghim nó xuống đáy */
+  /* bottom: 20px; */
 }
 .onlineUpdateTitle {
   font-size: small;
@@ -381,44 +392,186 @@ textarea,
 .lightModeBox span {
   font-size: small !important;
 }
-/* .bg-blue {
-  background-color: #0011ff91 !important;
-}
-/* .text-blue {
-  color: #640000 !important;
-}
-.staticColorBtn_checked,
-.configBtn_checked,
-.dynamicLightBtn_checked {
-  border: 2px solid #640000 !important;
-} */
 .connectBtnBox {
   transform: scale(0.8);
 }
 
 /* Định nghĩa kịch bản đổi màu */
-.picBox > a {
-  color: #00e1ff;
-  animation: doi-mau 12s infinite;
+.connectBox > a {
+  text-decoration: none;
+  color: #1579d4;
+  font-size: 18px;
+  font-weight: 700;
+  position: absolute;
+  bottom: 30px;
+  color: #ffffff69 !important;
 }
 
-.picBox img {
-  transform: scale3d(1.2);
-}
-.connectBox {
-  transform: scale(1.4);
-}
-/* 1. Khai báo font DroidSansChinese */
-@font-face {
-  font-family: "DroidSansChinese";
-  src: url("./assets/DroidSansChinese.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+/* ======================================================
+   HIỆU ỨNG MỚI: LÕI NĂNG LƯỢNG CYBERPUNK
+   ====================================================== */
+
+/* ======================================================
+   HIỆU ỨNG CYBERPUNK GLOW (ĐÃ GIẢM ĐỘ CHÓI)
+   ====================================================== */
+
+/* 1. Cấu hình hộp chứa */
+.picBox {
+  position: relative !important;
+  display: inline-flex !important;
+  justify-content: center;
 }
 
-/* 2. Ép toàn bộ giao diện dùng font này */
-html,
-body,
-* {
-  font-family: "DroidSansChinese", sans-serif !important;
+/* 2. Cấu hình ảnh Logo & Áp dụng hiệu ứng */
+.picBox > img {
+  /* --- GIỮ NGUYÊN CÁC THÔNG SỐ CŨ --- */
+  width: 220px !important;
+  transform: scale(1.4) !important;
+  margin-top: auto !important;
+  cursor: pointer;
+
+  /* --- BỘ KHỬ RĂNG CƯA --- */
+  backface-visibility: hidden !important;
+  outline: 1px solid transparent !important;
+  image-rendering: -webkit-optimize-contrast !important;
+
+  /* --- HIỆU ỨNG HOẠT HÌNH --- */
+  will-change: filter, transform; /* Tối ưu hiệu suất */
+  animation: cyberGlowTonedDown 4s ease-in-out infinite;
+}
+
+/* 3. Kịch bản ánh sáng (Phiên bản dịu mắt) */
+@keyframes cyberGlowTonedDown {
+  0%,
+  100% {
+    /* Trạng thái nghỉ: Sáng nhẹ nhàng */
+    filter: 
+      /* Lớp 1: Sát viền (Opacity 0.7) */ drop-shadow(
+        0 0 2px rgba(200, 255, 255, 0.7)
+      )
+      /* Lớp 2: Tỏa vừa (Opacity 0.4) */
+      drop-shadow(0 0 8px rgba(0, 255, 255, 0.4))
+      /* Lớp 3: Tỏa xa mờ (Opacity 0.2) */
+      drop-shadow(0 0 25px rgba(0, 150, 255, 0.2));
+
+    transform: scale(1.4); /* Scale gốc */
+  }
+  50% {
+    /* Trạng thái "thở": Sáng hơn nhưng không bị chói */
+    filter: 
+      /* Lớp 1: Nét hơn chút (Opacity tăng lên 0.85 - Trước là 0.9) */ drop-shadow(
+        0 0 3px rgba(220, 255, 255, 0.85)
+      )
+      /* Lớp 2: Tỏa rộng hơn (Opacity tăng lên 0.5 - Trước là 0.7) */
+      drop-shadow(0 0 12px rgba(50, 200, 255, 0.5))
+      /* Lớp 3: Tỏa xa hơn (Opacity tăng lên 0.3 - Trước là 0.5) */
+      drop-shadow(0 0 40px rgba(80, 100, 255, 0.3));
+
+    /* Phóng to nhẹ tạo nhịp thở */
+    transform: scale(1.41);
+  }
+}
+
+/* 1. Cấu hình nút bấm */
+.connectBtn {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* 2. Cấu hình chữ */
+.connectBtn .v-btn__content {
+  /* Để transform hoạt động mượt mà */
+  display: inline-block;
+  z-index: 10;
+  -webkit-font-smoothing: antialiased; /* Làm mượt font */
+  backface-visibility: hidden; /* Giấu mặt sau để ép render 3D */
+  transform: translateZ(0); /* Kích hoạt phần cứng GPU */
+}
+
+/* 3. Cấu hình Tên lửa (Giấu đi chờ lệnh) */
+.connectBtn::after {
+  content: "🚀";
+  position: absolute;
+  font-size: 28px;
+
+  /* Reset nền */
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  left: -150px; /* Nấp bên trái */
+  opacity: 0; /* Tàng hình */
+  z-index: 5;
+}
+
+/* --- KÍCH HOẠT KHI HOVER (CHẠY 1 LẦN) --- */
+
+/* Tổng thời gian là 1.4s cho cả quy trình */
+.connectBtn:hover .v-btn__content {
+  animation: lightSpeedInLeft 1.4s ease-out 1;
+}
+
+.connectBtn:hover::after {
+  animation: rocketFlyPass 1.4s ease-in-out 1;
+}
+
+/* --- KEYFRAMES --- */
+
+/* KỊCH BẢN CỦA TÊN LỬA (Bay trước) */
+@keyframes rocketFlyPass {
+  0% {
+    left: -150px;
+    opacity: 1;
+  }
+
+  /* Bay đến giữa đường thì chữ vẫn đang ẩn */
+  40% {
+    left: 150%;
+    opacity: 1;
+  } /* Bay vèo qua xong ở giây thứ 0.6 */
+
+  /* Sau đó biến mất luôn */
+  100% {
+    left: 150%;
+    opacity: 0;
+  }
+}
+
+/* KỊCH BẢN CỦA CHỮ (LightSpeedInLeft - Chạy sau) */
+@keyframes lightSpeedInLeft {
+  /* --- GIAI ĐOẠN 1: ẨN MÌNH (0% - 40%) --- */
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) skewX(0deg);
+  }
+  5% {
+    opacity: 0; /* Biến mất ngay để nhường sân cho tên lửa */
+  }
+  40% {
+    opacity: 0;
+    /* Chuẩn bị tư thế: Lùi ra xa bên trái và nghiêng người 30 độ */
+    transform: translate3d(-100%, 0, 0) skewX(30deg);
+  }
+
+  /* --- GIAI ĐOẠN 2: BAY VÀO (40% - 100%) --- */
+
+  /* 60%: Lao vào khung hình cực nhanh, nghiêng ngược lại (-20 độ) do quán tính */
+  60% {
+    opacity: 1;
+    transform: skewX(-10deg);
+  }
+
+  /* 70%: Hơi nảy lại một chút (5 độ) */
+  70% {
+    transform: skewX(5deg);
+  }
+
+  /* 100%: Đứng nghiêm chỉnh */
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }

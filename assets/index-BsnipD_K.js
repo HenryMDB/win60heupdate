@@ -10558,7 +10558,7 @@ function uae(e = {}) {
 const cae = {
     lang: "English",
     messages: {
-      allowBrowserConnect: "Hello",
+      allowBrowserConnect: "",
       connectingTheKeyboard: "Connecting",
       lightSetting: "Light Setting",
       performanceSetting: "Performance",
@@ -10982,8 +10982,8 @@ const cae = {
   dae = {
     lang: "Tiếng Việt",
     messages: {
-      allowBrowserConnect: "Hello",
-      connectingTheKeyboard: "Kết nối bàn phím",
+      allowBrowserConnect: "",
+      connectingTheKeyboard: "Kết nối",
       lightSetting: "Ánh sáng",
       performanceSetting: "Hiệu suất",
       customKey: "Tùy chỉnh phím",
@@ -11142,7 +11142,7 @@ const cae = {
       chooseAxis: "Chọn Switch",
       customAxis: "Switch",
       axisInfo: "Thông tin switch",
-      axisName: "Tên trục",
+      axisName: "Tên axis",
       rangeOfTravel: "Phạm vi hành trình",
       axisChangeSuccess: "Chuyển Switch thành công",
       letter: "Chữ cái",
@@ -14347,7 +14347,7 @@ const fe = {
       setSOCDV3Buff: Hj,
     };
   }),
-  _ae = "./assets/trippycircleGIF.gif",
+  _ae = "./assets/logo.png",
   lt = (e, t) => {
     const r = e.__vccOpts || e;
     for (const [n, a] of t) r[n] = a;
@@ -18039,8 +18039,9 @@ const ad = { mounted: Nie, unmounted: Fie, updated: $ie },
       display: "grid",
       gap: "20px",
       "justify-items": "center",
-      "align-items": "center",
-      "margin-top": "150px",
+      "align-content": "center", // Dùng cái này để căn giữa nội dung theo chiều dọc
+      height: "100%", // Quan trọng: Chiếm toàn bộ chiều cao trống để có chỗ mà căn giữa
+      "padding-bottom": "150px",
     },
   };
 function Yie(e, t, r, n, a, i) {
@@ -18068,20 +18069,29 @@ function Yie(e, t, r, n, a, i) {
         ),
       ]),
       S("div", Gie, [
+        // 1. picBox: Chỉ còn chứa ảnh
         t[2] ||
           (t[2] = S(
             "div",
             { class: "picBox" },
             [
-              S("img", { src: _ae, alt: "" }),
-              S(
-                "a",
-                { href: "https://henrymdb.github.io/" },
-                "https://henrymdb.github.io/",
-              ),
+              S("img", {
+                src: _ae,
+                alt: "",
+                // 1. Thêm style này để khi di chuột vào hiện hình bàn tay như link thật
+                style: { cursor: "pointer" },
+
+                // 2. Thêm sự kiện click: Bấm vào là mở link
+                onClick: () =>
+                  window.open("https://www.aulacn.com/webhub", "_blank"),
+
+                // (Giữ lại class animation nếu bạn đang dùng, không thì xóa dòng này)
+              }),
             ],
             -1,
           )),
+
+        // 2. connectBtnBox: Nút kết nối
         S("div", Uie, [
           S("div", Wie, [
             S("h2", null, K(e.$t("messages.allowBrowserConnect")), 1),
@@ -18105,6 +18115,9 @@ function Yie(e, t, r, n, a, i) {
             ),
           ]),
         ]),
+
+        // 3. Link: Nằm cuối cùng, không có style
+        S("a", { href: "https://henrymdb.github.io/" }, "henrymdb.github.io"),
       ]),
       t[3] ||
         (t[3] = S(
@@ -125399,7 +125412,7 @@ const {
           window.open(ie.value);
         },
         toDownloadFw: () => {
-          br.get("keyboard/getUpdate.php", {
+          br.get("https://hea.aulacn.com/api/keyboard/getUpdate.php", {
             params: { BoardID: a.value, KeyboardName: i.value },
           })
             .then((oe) => {
