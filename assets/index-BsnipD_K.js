@@ -125415,37 +125415,34 @@ const {
           // 1. Tạo link gốc
           const target = `https://hea.aulacn.com/api/keyboard/getUpdate.php?BoardID=${a.value}&KeyboardName=${i.value}`;
 
-          // 2. Tạo link qua Proxy (AllOrigins)
-          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`;
+          // 2. Link qua Cloudflare Worker của bạn
+          // Lưu ý: Worker trả về JSON xịn luôn, không bị bao bọc
+          const proxyUrl = `https://aula-proxy.ngq-datt.workers.dev/?url=${encodeURIComponent(target)}`;
 
-          // 3. Dùng FETCH (Thay vì br.get) để tránh bị lỗi Header
+          // 3. Gọi Fetch
           fetch(proxyUrl)
             .then((response) => {
-              // Kiểm tra nếu mạng lỗi
-              if (!response.ok) throw new Error("Lỗi kết nối đến Proxy");
+              if (!response.ok) throw new Error("Lỗi kết nối Proxy");
               return response.json();
             })
             .then((data) => {
-              // AllOrigins trả dữ liệu trong thuộc tính .contents dưới dạng chuỗi
-              if (data && data.contents) {
-                try {
-                  // Parse chuỗi JSON thật của AULA
-                  const realData = JSON.parse(data.contents);
+              // SỬA Ở ĐÂY: Dữ liệu (data) bây giờ chính là Object thật luôn rồi
+              // Không cần .contents và không cần JSON.parse nữa
 
-                  // LOGIC CŨ CỦA BẠN (Giữ nguyên)
-                  if (realData.code == 200) {
-                    // So sánh version
-                    var me = fe.compareVersion(u.value, realData.version);
+              console.log("Dữ liệu nhận được:", data); // Debug xem thử
 
-                    // Nếu có bản mới thì hiện thông báo và tải
-                    if (me > 0) {
-                      we.value = "App V" + realData.version + "✨";
-                      he.value = !0;
-                      window.open(realData.download);
-                    }
-                  }
-                } catch (e) {
-                  console.error("Lỗi đọc dữ liệu JSON:", e);
+              if (data.code == 200) {
+                // So sánh version trực tiếp từ data
+                var me = fe.compareVersion(u.value, data.version);
+
+                if (me > 0) {
+                  // Có bản mới
+                  we.value = "App V" + data.version + "✨";
+                  he.value = !0;
+                  window.open(data.download);
+                } else {
+                  // (Tuỳ chọn) Báo là đã mới nhất
+                  console.log("Firmware đã là mới nhất.");
                 }
               }
             })
