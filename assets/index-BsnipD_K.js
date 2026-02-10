@@ -125348,19 +125348,39 @@ const {
         he = q(!1),
         ie = q("");
       At(async () => {
-        br.get("/keyboard/getUpdate.php", {
-          params: { BoardID: a.value, KeyboardName: i.value },
-        })
-          .then((oe) => {
-            if (oe.status == 200 && oe.data.code == 200) {
-              var me = fe.compareVersion(u.value, oe.data.version);
-              me > 0 &&
-                ((we.value = "App V" + oe.data.version + "✨"),
-                (he.value = !0),
-                (ie.value = oe.data.download));
+        // 1. Tạo link gốc đến Server AULA
+        const target = `https://hea.aulacn.com/api/keyboard/getUpdate.php?BoardID=${a.value}&KeyboardName=${i.value}`;
+
+        // 2. Đi đường vòng qua Cloudflare Worker của bạn
+        const proxyUrl = `https://aula-proxy.ngq-datt.workers.dev/?url=${encodeURIComponent(target)}`;
+
+        // 3. Dùng FETCH (thay thế hoàn toàn br.get để tránh lỗi Header và Localhost)
+        fetch(proxyUrl)
+          .then((res) => {
+            if (!res.ok) throw new Error("Lỗi kết nối Proxy");
+            return res.json();
+          })
+          .then((data) => {
+            // Worker trả về JSON xịn, dùng trực tiếp luôn
+            if (data.code == 200) {
+              // So sánh phiên bản (giữ nguyên logic cũ của bạn)
+              var me = fe.compareVersion(u.value, data.version);
+
+              // Nếu có bản mới
+              if (me > 0) {
+                we.value = "App V" + data.version + "✨"; // Cập nhật chữ
+                he.value = !0; // Hiện dấu chấm đỏ/thông báo
+                ie.value = data.download; // Lưu link tải vào biến
+              }
             }
           })
-          .catch((oe) => {});
+          .catch((err) => {
+            // Im lặng hoặc log lỗi nhẹ nhàng (vì đây là auto-check)
+            console.log(
+              "Tự động kiểm tra cập nhật thất bại (có thể do mạng):",
+              err,
+            );
+          });
       });
       const ce = B(() => !(h.value == 0 && he.value && l.value == 255)),
         ue = B(() => !(h.value == 0 && l.value == 255)),
