@@ -121,8 +121,9 @@ button[value="lightTabPage-3"] {
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  opacity: 0.8;
+  opacity: 0.4;
   pointer-events: none;
+  bleed: 0.5;
 }
 .n-tabs-tab__label {
   transform: scale(0.9);
@@ -511,11 +512,11 @@ textarea,
 
 /* Tổng thời gian là 1.4s cho cả quy trình */
 .connectBtn:hover .v-btn__content {
-  animation: lightSpeedInLeft 1.4s ease-out 1;
+  animation: lightSpeedInLeft 3s ease-out 1;
 }
 
 .connectBtn:hover::after {
-  animation: rocketFlyPass 1.4s ease-in-out 1;
+  animation: rocketFlyPass 3s ease-in-out 1;
 }
 
 /* --- KEYFRAMES --- */

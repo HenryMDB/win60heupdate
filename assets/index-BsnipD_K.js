@@ -1,3 +1,10 @@
+////VideoBG
+const vid = document.getElementById("bgVideo");
+vid.play().catch(() => {
+  vid.muted = true;
+  vid.playbackRate;
+  vid.play();
+});
 // Trỏ đúng vào file esm trong thư mục bundles
 import {
   createTimeline,
@@ -134913,80 +134920,42 @@ br.interceptors.request.use(
   (e) => (console.log("错误的传参", "fail"), Promise.reject(e)),
 );
 ZT.use(RX).use(Ste()).use(Art).use(dN).mount("#app");
+////////////////////////////////////
 
-const vid = document.getElementById("bgVideo");
-
-vid.play().catch(() => {
-  vid.muted = true;
-  vid.play();
-});
 // Đợi web tải xong rồi chạy
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Hàm đợi nút GitHub xuất hiện
-const waiter = setInterval(() => {
-  // 1. Tìm cái nút (nhớ đảm bảo nút có class .my-github-link)
-  const btn = document.querySelector(".my-github-link");
+const combinedWaiter = setInterval(() => {
+  // Lấy tất cả các phần tử có class tương ứng
+  const elements = document.querySelectorAll(
+    ".ConnectPageFoot, .my-github-link",
+  );
 
-  if (btn) {
-    // 2. Cắt chữ ra thành từng mảnh (splitText của V4)
-    const { chars } = splitText(btn, { words: false, chars: true });
+  // Chỉ chạy khi đã tìm thấy ít nhất một phần tử
+  if (elements.length > 0) {
+    elements.forEach((el) => {
+      // 1. Cắt chữ và tạo bản sao (Clone) cho từng phần tử
+      const { chars } = splitText(el, {
+        chars: {
+          wrap: "clip",
+          clone: "bottom",
+        },
+      });
 
-    // 3. Fix lỗi hiển thị (Bắt buộc phải set inline-block)
-    chars.forEach((char) => {
-      char.style.display = "inline-block";
-      char.style.transformOrigin = "center bottom";
+      // 2. Tạo Timeline riêng cho từng phần tử để chúng chạy độc lập
+      createTimeline({
+        loop: true,
+        loopDelay: 1050,
+      }).add(chars, {
+        y: "-100%",
+        duration: 750,
+        ease: "inOut(2)",
+        delay: stagger(150, { from: "center" }),
+      });
     });
 
-    // 4. Chạy hiệu ứng
-    animate(chars, {
-      y: [
-        { to: "-10px", ease: "outExpo", duration: 600 },
-        { to: 0, ease: "outBounce", duration: 800, delay: 100 },
-      ],
-      rotate: {
-        from: "-1turn",
-        to: 0,
-        delay: 0,
-      },
-      delay: stagger(50),
-      loop: true,
-      loopDelay: 2000,
-    });
-
-    // Dừng tìm kiếm
-    clearInterval(waiter);
+    // Dừng tìm kiếm sau khi đã áp dụng hiệu ứng thành công
+    clearInterval(combinedWaiter);
   }
 }, 500);
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Đợi class .ConnectPageFoot xuất hiện
-const footWaiter = setInterval(() => {
-  const footElem = document.querySelector(".ConnectPageFoot");
-
-  if (footElem) {
-    // 1. Cắt chữ và tạo bản sao (Clone)
-    // 'wrap: clip' giúp ẩn phần chữ thừa khi nó bị đẩy lên/xuống
-    const { chars } = splitText(footElem, {
-      chars: {
-        wrap: "clip",
-        clone: "bottom", // Tạo một bản sao nằm ở dưới bản chính
-      },
-    });
-
-    // 2. Tạo Timeline để chạy hiệu ứng
-    createTimeline({
-      loop: true,
-      loopDelay: 1050,
-    }).add(chars, {
-      y: "-100%", // Đẩy toàn bộ chữ lên trên 100% chiều cao của nó
-      duration: 750,
-      ease: "inOut(2)",
-      // Stagger từ giữa tỏa ra hai bên (from: 'center')
-      delay: stagger(150, { from: "center" }),
-    });
-
-    clearInterval(footWaiter);
-  }
-}, 500);
-/////////////////////////////////////////////
