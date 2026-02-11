@@ -3,7 +3,7 @@ import {
   animate,
   stagger,
   splitText,
-} from "../node_modules/animejs/dist/bundles/anime.esm.js";
+} from "../assets/anime.esm.js";
 
 var Wj = Object.defineProperty;
 var Yj = (e, t, r) =>
