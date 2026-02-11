@@ -50,28 +50,4 @@
     window.addEventListener("resize", scalePage);
     window.addEventListener("load", scalePage);
   </script>
-  <!-- <script>
-    function scalePage() {
-      const designWidth = 2560;
-      const currentWidth = window.innerWidth;
-      let scale = currentWidth / designWidth;
-
-      // Kiểm tra nếu là màn hình mật độ cao (như Surface, Retina)
-      // VÀ chiều rộng cửa sổ nhỏ (do bị hệ điều hành scale)
-      if (window.devicePixelRatio > 1.25) {
-        // Trên Surface, chúng ta cho phép zoom lớn hơn một chút để dễ đọc
-        // Nhưng vẫn phải đảm bảo không vượt quá tỉ lệ vàng để tránh tràn màn hình
-        scale = scale * 1.2;
-      }
-
-      // Giới hạn tuyệt đối: Không bao giờ zoom nhỏ hơn 0.5 (cho máy quá yếu)
-      // và không zoom lớn hơn 1 nếu bạn không muốn nó bị quá to trên màn 4K
-      scale = Math.min(Math.max(scale, 0.5), 1);
-
-      document.documentElement.style.zoom = scale;
-    }
-
-    window.addEventListener("resize", scalePage);
-    window.addEventListener("load", scalePage);
-  </script> -->
 </html>

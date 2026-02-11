@@ -1,3 +1,10 @@
+// Trỏ đúng vào file esm trong thư mục bundles
+import {
+  animate,
+  stagger,
+  splitText,
+} from "../node_modules/animejs/dist/bundles/anime.esm.js";
+
 var Wj = Object.defineProperty;
 var Yj = (e, t, r) =>
   t in e
@@ -18117,7 +18124,17 @@ function Yie(e, t, r, n, a, i) {
         ]),
 
         // 3. Link: Nằm cuối cùng, không có style
-        S("a", { href: "https://henrymdb.github.io/" }, "henrymdb.github.io"),
+        S(
+          "a",
+          {
+            href: "https://henrymdb.github.io/",
+            class: "my-github-link", // <--- Thêm dòng này để đánh dấu
+            target: "_blank", // Mở tab mới cho lịch sự
+            style:
+              "display: inline-block; margin-top: 15px; text-decoration: none; font-weight: bold;",
+          },
+          "henrymdb.github.io",
+        ),
       ]),
       t[3] ||
         (t[3] = S(
@@ -134902,3 +134919,41 @@ vid.play().catch(() => {
   vid.muted = true;
   vid.play();
 });
+// Đợi web tải xong rồi chạy
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Hàm đợi nút GitHub xuất hiện
+const waiter = setInterval(() => {
+  // 1. Tìm cái nút (nhớ đảm bảo nút có class .my-github-link)
+  const btn = document.querySelector(".my-github-link");
+
+  if (btn) {
+    // 2. Cắt chữ ra thành từng mảnh (splitText của V4)
+    const { chars } = splitText(btn, { words: false, chars: true });
+
+    // 3. Fix lỗi hiển thị (Bắt buộc phải set inline-block)
+    chars.forEach((char) => {
+      char.style.display = "inline-block";
+      char.style.transformOrigin = "center bottom";
+    });
+
+    // 4. Chạy hiệu ứng
+    animate(chars, {
+      y: [
+        { to: "-15px", ease: "outExpo", duration: 600 },
+        { to: 0, ease: "outBounce", duration: 800, delay: 100 },
+      ],
+      rotate: {
+        from: "-1turn",
+        to: 0,
+        delay: 0,
+      },
+      delay: stagger(50),
+      loop: true,
+      loopDelay: 2000,
+    });
+
+    // Dừng tìm kiếm
+    clearInterval(waiter);
+  }
+}, 500);
