@@ -3,7 +3,7 @@ import {
   animate,
   stagger,
   splitText,
-} from "../node_modules/animejs/dist/bundles/anime.esm.js";
+} from "./node_modules/animejs/dist/bundles/anime.esm.js";
 
 var Wj = Object.defineProperty;
 var Yj = (e, t, r) =>
@@ -134940,7 +134940,7 @@ const waiter = setInterval(() => {
     // 4. Chạy hiệu ứng
     animate(chars, {
       y: [
-        { to: "-15px", ease: "outExpo", duration: 600 },
+        { to: "-30px", ease: "outExpo", duration: 600 },
         { to: 0, ease: "outBounce", duration: 800, delay: 100 },
       ],
       rotate: {
