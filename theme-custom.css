@@ -575,3 +575,14 @@ textarea,
     transform: translate3d(0, 0, 0);
   }
 }
+.picBox {
+  perspective: 1000px !important; /* Tạo độ sâu cho không gian 3D */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.picBox img {
+  transition: transform 0.1s ease !important; /* Hỗ trợ mượt mà hơn khi di chuyển */
+  transform-style: preserve-3d !important; /* Giữ nguyên định dạng 3D khi xoay */
+}

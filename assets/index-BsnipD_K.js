@@ -1,5 +1,6 @@
 // Trỏ đúng vào file esm trong thư mục bundles
 import {
+  createTimeline,
   animate,
   stagger,
   splitText,
@@ -134940,7 +134941,7 @@ const waiter = setInterval(() => {
     // 4. Chạy hiệu ứng
     animate(chars, {
       y: [
-        { to: "-30px", ease: "outExpo", duration: 600 },
+        { to: "-10px", ease: "outExpo", duration: 600 },
         { to: 0, ease: "outBounce", duration: 800, delay: 100 },
       ],
       rotate: {
@@ -134957,3 +134958,35 @@ const waiter = setInterval(() => {
     clearInterval(waiter);
   }
 }, 500);
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Đợi class .ConnectPageFoot xuất hiện
+const footWaiter = setInterval(() => {
+  const footElem = document.querySelector(".ConnectPageFoot");
+
+  if (footElem) {
+    // 1. Cắt chữ và tạo bản sao (Clone)
+    // 'wrap: clip' giúp ẩn phần chữ thừa khi nó bị đẩy lên/xuống
+    const { chars } = splitText(footElem, {
+      chars: {
+        wrap: "clip",
+        clone: "bottom", // Tạo một bản sao nằm ở dưới bản chính
+      },
+    });
+
+    // 2. Tạo Timeline để chạy hiệu ứng
+    createTimeline({
+      loop: true,
+      loopDelay: 1050,
+    }).add(chars, {
+      y: "-100%", // Đẩy toàn bộ chữ lên trên 100% chiều cao của nó
+      duration: 750,
+      ease: "inOut(2)",
+      // Stagger từ giữa tỏa ra hai bên (from: 'center')
+      delay: stagger(150, { from: "center" }),
+    });
+
+    clearInterval(footWaiter);
+  }
+}, 500);
+/////////////////////////////////////////////
