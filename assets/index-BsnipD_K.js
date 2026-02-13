@@ -10615,8 +10615,8 @@ const cae = {
       changeConfig: "Config List",
       config1: "Normal",
       config2: "Gaming",
-      config3: "profile 3",
-      config4: "profile 4",
+      config3: "Profile 3",
+      config4: "Profile 4",
       configDialogText:
         "The keyboard needs to be reconnected after the configuration switchover. Do you want to confirm the configuration switchover?",
       mainLightSetting: "Keyboard Light Setting",
@@ -52545,11 +52545,11 @@ const MK = lt(oxe, [["render", sxe]]),
         }));
       /// DOAN NAY CHINH TRAVEL TEST
       const c = B(() => {
-        var d = 165,
-          v = 213,
-          h = 250;
+        var d = 189, // goc:165
+          v = 150, // goc:213
+          h = 147; // goc:250
         return (
-          u.value > 0 && u.value < 8 && ((d = 33), (v = 150), (h = 243)),
+          u.value > 0 && u.value < 8 && ((d = 201), (v = 14), (h = 0)), // goc: d33 v150 h243
           {
             height: `${(s.value / 4) * 260}px`,
             backgroundColor: `rgb(${d}, ${v}, ${h})`,
@@ -115101,7 +115101,7 @@ function aGe(e, t, r, n, a, i) {
           default: te(() => [
             D(
               t0,
-              { class: "bg-surface-light pt-4" },
+              { class: "canchinh" },
               {
                 default: te(() => [
                   Fe(K(e.$t("messages.adjustingInstruction2")), 1),
@@ -122664,7 +122664,7 @@ function fqe(e, t, r, n, a, i) {
                 S(
                   "span",
                   aqe,
-                  "①" + K(e.$t("messages.upgradeDescriptionText2")),
+                  "1️⃣ " + K(e.$t("messages.upgradeDescriptionText2")),
                   1,
                 ),
                 t[0] || (t[0] = S("br", null, null, -1)),
@@ -122674,7 +122674,7 @@ function fqe(e, t, r, n, a, i) {
                 S(
                   "span",
                   oqe,
-                  "②" + K(e.$t("messages.upgradeDescriptionText4")),
+                  "2️⃣ " + K(e.$t("messages.upgradeDescriptionText4")),
                   1,
                 ),
                 t[3] || (t[3] = S("br", null, null, -1)),
@@ -122684,7 +122684,7 @@ function fqe(e, t, r, n, a, i) {
                 S(
                   "span",
                   sqe,
-                  "③" + K(e.$t("messages.upgradeDescriptionText6")),
+                  "3️⃣ " + K(e.$t("messages.upgradeDescriptionText6")),
                   1,
                 ),
                 t[6] || (t[6] = S("br", null, null, -1)),
@@ -122694,7 +122694,7 @@ function fqe(e, t, r, n, a, i) {
                 S(
                   "span",
                   cqe,
-                  "④" + K(e.$t("messages.upgradeDescriptionText8")),
+                  "4️⃣ " + K(e.$t("messages.upgradeDescriptionText8")),
                   1,
                 ),
                 t[9] || (t[9] = S("br", null, null, -1)),
@@ -125538,7 +125538,7 @@ function sZe(e, t, r, n, a, i) {
                 default: te(() => [
                   S("div", WXe, [
                     S("div", null, [
-                      S("h2", null, "②" + K(e.$t("messages.onlineUpdate")), 1),
+                      S("h2", null, "❣ " + K(e.$t("messages.onlineUpdate")), 1),
                     ]),
                     S(
                       "div",

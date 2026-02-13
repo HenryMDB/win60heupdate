@@ -480,6 +480,19 @@ textarea,
 .connectBtn {
   position: relative !important;
   overflow: hidden !important;
+  background-image: linear-gradient(
+    to right,
+    #304352 0%,
+    #d7d2cc 51%,
+    #304352 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 10px #eee;
+  display: block;
+  /* outline: none; */
+  border: none;
 }
 
 /* 2. Cấu hình chữ */
@@ -491,7 +504,11 @@ textarea,
   backface-visibility: hidden; /* Giấu mặt sau để ép render 3D */
   transform: translateZ(0); /* Kích hoạt phần cứng GPU */
 }
-
+.connectBtn:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
 /* 3. Cấu hình Tên lửa (Giấu đi chờ lệnh) */
 .connectBtn::after {
   content: "🚀";
@@ -515,11 +532,11 @@ textarea,
 
 /* Tổng thời gian là 1.4s cho cả quy trình */
 .connectBtn:hover .v-btn__content {
-  animation: lightSpeedInLeft 3s ease-out 1;
+  animation: lightSpeedInLeft 2s ease-out 1;
 }
 
 .connectBtn:hover::after {
-  animation: rocketFlyPass 3s ease-in-out 1;
+  animation: rocketFlyPass 2s ease-in-out 1;
 }
 
 /* --- KEYFRAMES --- */
@@ -589,4 +606,48 @@ textarea,
 .picBox img {
   transition: transform 0.1s ease !important; /* Hỗ trợ mượt mà hơn khi di chuyển */
   transform-style: preserve-3d !important; /* Giữ nguyên định dạng 3D khi xoay */
+}
+.vertical-progress,
+.axis-image[data-v-1ce4f5b0] {
+  background-color: #b1b1b123 !important;
+}
+.configBtn:hover,
+.configBtn_checked:hover {
+  transform: scale(1.05);
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+.configBtn_checked {
+  background-image: linear-gradient(
+    to right,
+    #314755 0%,
+    #26a0da 51%,
+    #314755 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  border-color: #ffffff;
+}
+.configBtn {
+  background-image: linear-gradient(
+    to right,
+    #314755 0%,
+    #26a0da 51%,
+    #314755 100%
+  );
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+}
+.v-list-item--nav:hover,
+.dynamicLightBtn:hover,
+.dynamicLightBtn_checked:hover,
+.v-btn:hover {
+  transform: scale(1.06);
+  transition: 0.4s;
 }
