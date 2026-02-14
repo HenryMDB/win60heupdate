@@ -10698,7 +10698,7 @@ const cae = {
       numberKey: "Number Key",
       letterKey: "Letter Key",
       unCheck: "unCheck",
-      resetTrvel: "Reset Trvel",
+      resetTrvel: "Reset Travel",
       triggerOptimization: "Trigger Optimization",
       triggerOptimizationDescription1:
         "The total stroke of some shafts will have a tolerance of ±0.2mm, and setting 0 dead zone may cause false triggering or broken contact.",

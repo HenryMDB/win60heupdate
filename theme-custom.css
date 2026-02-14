@@ -647,7 +647,8 @@ textarea,
 .v-list-item--nav:hover,
 .dynamicLightBtn:hover,
 .dynamicLightBtn_checked:hover,
-.v-btn:hover {
+.v-btn:hover,
+.lang-btn:hover {
   transform: scale(1.06);
   transition: 0.4s;
 }
